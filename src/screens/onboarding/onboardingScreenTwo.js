@@ -1,6 +1,6 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import { Text, StyleSheet,ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { View, H1 } from 'native-base';
+import { View, H1, Container, Content } from 'native-base';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { withNavigationFocus } from 'react-navigation';
 
@@ -11,47 +11,46 @@ import ButtonContainer from '../../components/ButtonContainer';
 import WhiteText from '../../components/WhiteText';
 
 const OnboardingScreenTwo = props => {
-  const [element, setElement] = useState(null)
-  useEffect(() => {
-    if(props.isFocused) {
-      setElement(<SlideIndication />)
-    }
-  },[props.isFocused])
   return (
-    <ImageBackground 
-      style={styles.background}
-      source={require('../../assets/onboarding-two/Rectangle.png')}>
-        <View style={styles.textContainer}>
-          <H1 style={{...styles.text, ...styles.title}}>Welcome to Budget Planner</H1>
-          <Text style={styles.text}>Take control of your money by tracking</Text>
-          <Text style={styles.text}>your expenses, adding goals</Text>
-        </View>
-       <Image style={styles.mockup} source={require('../../assets/onboarding-two/mockup.png')}/>
-       <Image style={styles.fade} source={require('../../assets/onboarding-two/gradient.png')}/>
-       <ButtonContainer style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.skip}><WhiteText>SKIP</WhiteText></TouchableOpacity>
-        <SlideIndication />
-        <NiceButton  onPress={() => props.navigation.navigate('OnboardingThree')}>
-          <Icon  name="arrowright" size={28} color="#f4868d" />
-        </NiceButton>
-       </ButtonContainer>
-    </ImageBackground>
+    <Container>
+      <ImageBackground 
+        source={require('../../assets/onboarding-two/bg.png')}
+        style={styles.background}
+      >
+        <Content contentContainerStyle={styles.content}>
+          <View style={styles.textContainer}>
+            <H1 style={{...styles.text, ...styles.title}}>Welcome to Budget Planner</H1>
+            <WhiteText>Take control of your money by tracking</WhiteText>
+            <WhiteText>your expenses, adding goals</WhiteText>
+            <Image style={styles.mockup} source={require('../../assets/onboarding-two/mockup.png')} />
+          </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity  style={styles.skip}><WhiteText>SKIP</WhiteText></TouchableOpacity>
+              <SlideIndication />
+              <NiceButton  onPress={() => props.navigation.navigate('OnboardingThree')}>
+                <Icon  name="arrowright" size={28} color="#f4868d" />
+              </NiceButton>
+            </View>
+          <Image style={styles.fade} source={require('../../assets/onboarding-two/gradient.png')} />
+        </Content>
+      </ImageBackground>
+    </Container>
   )
 }
 
 const styles = StyleSheet.create({
   background: {
-    flex: 1,
-    alignItems: 'center',
-    position: 'relative',
-    paddingTop: 10,
+    flex: 1
+  },
+  content: {
+    justifyContent: 'space-between',
+    flex: 1
   },
   textContainer: {
-    marginTop: 80,
-    marginBottom: 40,
+
   },
   title: {
-    marginBottom: 10
+
   },
   text: {
     color: 'white',
@@ -59,19 +58,19 @@ const styles = StyleSheet.create({
   },
   mockup: {
     position: 'relative',
+    bottom: -60,
+    zIndex: -3
   },
   fade: {
     position: "absolute",
-    width: '100%',
     bottom: 0,
+    flex: 1,
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    position: "relative",
-    width: "90%",
-    bottom: 100,
-    alignItems: 'center'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    zIndex: 4
   },
   skip: {
     marginRight: 58

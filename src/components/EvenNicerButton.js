@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 16,
-    paddingHorizontal: 24,
+    paddingHorizontal: 36,
     alignSelf: 'center',
     shadowColor: 'rgba(239, 245, 255, 0.004)',
     shadowOffset: {width: 0, height: 16},

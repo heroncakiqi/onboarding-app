@@ -19,6 +19,7 @@ import OnboardingScreenSix from './src/screens/onboarding/onboardingScreenSix';
 import MobileNumberScreen from './src/screens/signup/MobileNumberScreen'
 import PasscodeScreen from './src/screens/signup/PasscodeScreen';
 import VerificationScreen from './src/screens/signup/VerificationScreen';
+import TermsAndConditionsScreen from './src/screens/signup/TermsAndConditions';
 
 const onboardingFlow = createMaterialTopTabNavigator({
   OnboardingOne: OnboardingScreenOne,
@@ -41,7 +42,8 @@ const onboardingFlow = createMaterialTopTabNavigator({
 const signupFlow = createStackNavigator({
   MobileNumber: MobileNumberScreen,
   Passcode: PasscodeScreen,
-  Verification: VerificationScreen
+  Verification: VerificationScreen,
+  TermsAndConditions: TermsAndConditionsScreen,
 }, {
   defaultNavigationOptions: {
     headerStyle: {

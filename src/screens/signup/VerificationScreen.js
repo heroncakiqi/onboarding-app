@@ -20,6 +20,12 @@ const PasscodeScreen = props => {
     pinInput.current.focus()
   },[props.isFocused])
 
+  useEffect(() => {
+    if(code.length === 4) {
+      props.navigation.navigate('TermsAndConditions');
+    }
+  },[code])
+
   const handleContinue = () => {
     if(code.length === 4) {
       setPasscode(code);
@@ -40,10 +46,7 @@ const PasscodeScreen = props => {
           <Spacer />
           <Spacer />
           <SmoothPinCodeInput
-            cellStyle={{
-              borderBottomWidth: 3,
-              borderColor: '#e5e5e5',
-            }}
+            cellStyle={styles.cellStyle}
             cellStyleFocused={{
               borderColor: '#31d19e'
             }}
@@ -51,6 +54,7 @@ const PasscodeScreen = props => {
               color: '#1c1c1c',
               fontSize: 22,
             }}
+            containerStyle={styles.pinContainer}
             ref={pinInput}
             value={code}
             onTextChange={setCode}
@@ -80,8 +84,13 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   pinContainer: {
+    width: "100%"
   },
   cellStyle: {
+      borderBottomWidth: 3,
+      borderColor: '#e5e5e5',
+      marginLeft: 6,
+      marginRight: 6
   },
   arrow: {
     marginLeft: 8
