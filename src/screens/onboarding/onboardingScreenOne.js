@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { StyleSheet, ImageBackground, Image } from 'react-native';
 import { View, H1, Container, Content } from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 
 import NiceButton from '../../components/NiceButton';
 import SlideIndication from '../../components/SlideIndication';
@@ -8,11 +9,10 @@ import ButtonContainer from '../../components/ButtonContainer';
 import WhiteText from '../../components/WhiteText';
 
 const OnboardingScreenOne = (props) => {
-
   return (
     <Container style={styles.background}>
-      <ImageBackground
-        source={require('../../assets/onboarding-one/bg-copy.png')}
+      <LinearGradient
+        colors={['#9998fc','#756cf1']}
         style={styles.background}>
         <Content contentContainerStyle={styles.content}>
           <View style={styles.imageContainer}>
@@ -30,13 +30,13 @@ const OnboardingScreenOne = (props) => {
             <NiceButton 
               style={styles.button}
               large 
-              onPress={() => props.navigation.navigate('OnboardingTwo')}
+              onPress={() => props.goNext()}
             >
               Next
             </NiceButton>
         </ButtonContainer>
         </Content>
-      </ImageBackground>
+      </LinearGradient>
     </Container>
   );
 };
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   content: {
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     flex: 1
   },
   imageContainer: {
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     marginBottom: 10
     },
   button: {
-    marginBottom: 30
+    marginBottom: 30,
+    marginTop: 20,
   },
   middle: {
     position: 'relative',

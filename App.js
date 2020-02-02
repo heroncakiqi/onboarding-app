@@ -9,54 +9,37 @@ import { Provider } from 'react-redux'
 import store from './src/store';
 
 // onboarding screens
+
+import OnboardingSwiper from './src/screens/onboarding/OnboaedingSwiper'
 import OnboardingScreenOne from './src/screens/onboarding/onboardingScreenOne';
 import OnboardingScreenTwo from './src/screens/onboarding/onboardingScreenTwo';
 import OnboardingScreenThree from './src/screens/onboarding/onboardingScreenThree';
 import OnboardingScreenFour from './src/screens/onboarding/onboardingScreenFour';
 import OnboardingScreenFive from './src/screens/onboarding/onboardingScreenFive';
 import OnboardingScreenSix from './src/screens/onboarding/onboardingScreenSix';
+
+
+import AuthLoadingScreen from './src/screens/AuthLoadingScreen';
+
 // signup screens
 import MobileNumberScreen from './src/screens/signup/MobileNumberScreen'
 import PasscodeScreen from './src/screens/signup/PasscodeScreen';
 import VerificationScreen from './src/screens/signup/VerificationScreen';
 import TermsAndConditionsScreen from './src/screens/signup/TermsAndConditions';
 
-const onboardingFlow = createMaterialTopTabNavigator({
-  OnboardingOne: OnboardingScreenOne,
-  OnboardingTwo: OnboardingScreenTwo,
-  OnboardingThree: OnboardingScreenThree,
-  OnboardingFour: OnboardingScreenFour,
-  OnboardingFive: OnboardingScreenFive,
-  OnboardingSix: OnboardingScreenSix
-},
-{
-    initialRouteName: "OnboardingOne",
-    animationEnabled: true,
-    tabBarOptions: {
-      showLabel: false,
-      showIcon: false,
-      style: { height: 0 }
-    }
-});
-
-const signupFlow = createStackNavigator({
+const authFlow = createStackNavigator({
+  OnboardingSwiper,
+  LoginScreen: OnboardingScreenFive,
   MobileNumber: MobileNumberScreen,
   Passcode: PasscodeScreen,
   Verification: VerificationScreen,
-  TermsAndConditions: TermsAndConditionsScreen,
-}, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#fcfcff',
-      elevation: 0,
-    },
-  }
-})
-
+  TermsAndConditions: TermsAndConditionsScreen
+});
 
 const navigator = createSwitchNavigator({
-  onboardingFlow,
-  signupFlow 
+  AuthLoading: AuthLoadingScreen,
+  authFlow,
+  // TODO: App flow
 })
 
 const App = createAppContainer(navigator);

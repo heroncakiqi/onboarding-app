@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 60,
     justifyContent: 'space-between',
+    marginVertical: 12
   },
 });
 

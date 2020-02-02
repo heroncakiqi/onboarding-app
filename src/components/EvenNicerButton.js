@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 const EvenNicerButton = props => {
 
   let buttonStyle = {
-    ...styles.button,
+    ...styles.container,
     ...props.style
   }
 
@@ -34,10 +34,11 @@ const EvenNicerButton = props => {
   }
 
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
       <LinearGradient
-        style={buttonStyle}
-        start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#7ef192', '#2dc897']} >
+      style={styles.button}
+      start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#7ef192', '#2dc897']}
+      >
         <H3 style={textStyle}>{props.children}</H3>
       </LinearGradient>
     </TouchableOpacity>
@@ -52,12 +53,15 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 36,
     alignSelf: 'center',
+    width: "100%"
+  },
+  container: {
+    borderRadius: 30,
     shadowColor: 'rgba(239, 245, 255, 0.004)',
     shadowOffset: {width: 0, height: 16},
     shadowOpacity: 1,
     shadowRadius: 2,
     elevation: 5,
-    position: 'relative',
   },
   textStyle: {
     color: 'white'

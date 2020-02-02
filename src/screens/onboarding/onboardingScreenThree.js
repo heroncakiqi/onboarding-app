@@ -1,67 +1,65 @@
-import React,{useEffect, useState} from 'react';
-import { Text, StyleSheet,ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { View, H1 } from 'native-base';
+import React from 'react';
+import { StyleSheet, Image } from 'react-native';
+import { View, H1, Container, Content } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
+import LinearGradient from 'react-native-linear-gradient';
 
 import NiceButton from '../../components/NiceButton';
 import SlideIndication from '../../components/SlideIndication';
 import ButtonContainer from '../../components/ButtonContainer';
 import WhiteText from '../../components/WhiteText';
-import Spacer from '../../components/Spacer';
 
 const OnboardingScreenThree = props => {
   return (
-		<ImageBackground
-			style={styles.background}
-			source={require('../../assets/onboarding-three/bg.png')}
-		>
-			<H1 style={{...styles.text, ...styles.title}}>Light and Dark theme</H1>
-			<View style={styles.imageContainer}>
-				<Image source={require('../../assets/onboarding-three/white-phone.png')} />
-				<Image source={require('../../assets/onboarding-three/black-phone.png')} />
-			</View>
-			<View>
-				<WhiteText>Take control of your money by tracking</WhiteText>
-				<WhiteText>your expenses, adding goals</WhiteText>
-			</View>
-      <Spacer />
-			<SlideIndication />
-      <Spacer />
-      <Spacer />
-			<ButtonContainer style={styles.buttonContainer}>
-				<NiceButton transparent>Login</NiceButton>
-				<NiceButton 
-					style={styles.button}
-					onPress={() => props.navigation.navigate('OnboardingFour')}>
-					Sign up
-				</NiceButton>
-			</ButtonContainer>
-		</ImageBackground>
+		<Container>
+			<LinearGradient
+				style={styles.background}
+				colors={['#7bdda9','#41b8b1']}
+			>
+			<Content contentContainerStyle={styles.content}>
+					<H1 style={styles.text}>Light and Dark theme</H1>
+					<View style={styles.imageContainer}>
+						<Image style={styles.mockup} source={require('../../assets/onboarding-three/white-phone.png')} />
+						<Image style={styles.mockup} source={require('../../assets/onboarding-three/black-phone.png')} />
+					</View>
+					<View style={styles.text}>
+						<WhiteText>Take control of your money by tracking</WhiteText>
+						<WhiteText>your expenses, adding goals</WhiteText>
+					</View>
+					<SlideIndication />
+					<ButtonContainer style={styles.buttonContainer}>
+						<NiceButton  transparent>Login</NiceButton>
+						<NiceButton 
+							style={styles.button}
+							onPress={() => props.goNext()}>
+							Sign up
+						</NiceButton>
+					</ButtonContainer>
+				</Content>
+			</LinearGradient>
+		</Container>
   ) 
 }
 
 const styles = StyleSheet.create({
   background: {
 		flex: 1,
-    alignItems: 'center',
-    position: 'relative',
-		paddingTop: 70,
+	},
+	content: {
+		marginTop: 60,
+		alignItems: 'center',
+		justifyContent: "space-between",
+		flex: 1
 	},
 	text: {
-		color: 'white'
-	},
-	title: {
-		marginBottom: 32
+		color: 'white',
+		marginVertical: 16
 	},
 	imageContainer: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',
-		marginBottom: 32,
-		width: '80%'
 	},
-	dots: {
-		marginTop: 32,
-		marginBottom: 32
+	mockup: {
+		marginHorizontal: 12
 	},
 	button: {
 		flex: 1
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		flexDirection: "row",
 		justifyContent: 'space-between',
-		width: '90%'
+		marginBottom: 36
 	}
 });
 

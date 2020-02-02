@@ -1,9 +1,8 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Text, StyleSheet,ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { View, H1, Container, Content } from 'native-base';
 import Icon from 'react-native-vector-icons/AntDesign';
-import { withNavigationFocus } from 'react-navigation';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 import SlideIndication from '../../components/SlideIndication';
 import NiceButton from '../../components/NiceButton';
@@ -13,8 +12,8 @@ import WhiteText from '../../components/WhiteText';
 const OnboardingScreenTwo = props => {
   return (
     <Container>
-      <ImageBackground 
-        source={require('../../assets/onboarding-two/bg.png')}
+      <LinearGradient 
+        colors={['#fa9f87','#f27d8e']}
         style={styles.background}
       >
         <Content contentContainerStyle={styles.content}>
@@ -22,63 +21,66 @@ const OnboardingScreenTwo = props => {
             <H1 style={{...styles.text, ...styles.title}}>Welcome to Budget Planner</H1>
             <WhiteText>Take control of your money by tracking</WhiteText>
             <WhiteText>your expenses, adding goals</WhiteText>
-            <Image style={styles.mockup} source={require('../../assets/onboarding-two/mockup.png')} />
           </View>
+          <Image style={styles.mockup} source={require('../../assets/onboarding-two/mockup.png')} />
             <View style={styles.buttonContainer}>
               <TouchableOpacity  style={styles.skip}><WhiteText>SKIP</WhiteText></TouchableOpacity>
               <SlideIndication />
-              <NiceButton  onPress={() => props.navigation.navigate('OnboardingThree')}>
+              <NiceButton  onPress={() => props.goNext()}>
                 <Icon  name="arrowright" size={28} color="#f4868d" />
               </NiceButton>
             </View>
-          <Image style={styles.fade} source={require('../../assets/onboarding-two/gradient.png')} />
+            <Image style={styles.fade} source={require('../../assets/onboarding-two/gradient.png')} />
         </Content>
-      </ImageBackground>
+      </LinearGradient>
     </Container>
   )
 }
 
 const styles = StyleSheet.create({
   background: {
-    flex: 1
+    flex: 1,
   },
   content: {
     justifyContent: 'space-between',
-    flex: 1
+    marginTop: 60,
+    marginBottom: 0,
+    flex: 1,
+    position: 'relative'
   },
   textContainer: {
-
   },
   title: {
-
+    marginBottom: 12
   },
   text: {
     color: 'white',
     alignSelf: 'center'
   },
   mockup: {
-    position: 'relative',
-    bottom: -60,
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
     zIndex: -3
   },
   fade: {
     position: "absolute",
-    bottom: 0,
-    flex: 1,
+    bottom: -5,
+    width: "100%",
+    zIndex: -1
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    zIndex: 4
+    width: '90%',
+    alignSelf: 'center',
+    zIndex: 4,
+    marginBottom: 36,
+    zIndex: 100
   },
   skip: {
     marginRight: 58
   }
 });
 
-OnboardingScreenTwo.navigationOptions = {
-  headerShown: false
-}
-
-export default withNavigationFocus(OnboardingScreenTwo);
+export default OnboardingScreenTwo;

@@ -10,7 +10,7 @@ const WhiteText = props => {
 const styles = StyleSheet.create({
   text: {
 		color: 'white',
-		alignSelf: 'center'
+    alignSelf: 'center',
 	},
 })
 
