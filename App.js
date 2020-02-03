@@ -29,7 +29,7 @@ import TermsAndConditionsScreen from './src/screens/signup/TermsAndConditions';
 
 const authFlow = createStackNavigator({
   OnboardingSwiper,
-  LoginScreen: OnboardingScreenFive,
+  Login: OnboardingScreenFive,
   MobileNumber: MobileNumberScreen,
   Passcode: PasscodeScreen,
   Verification: VerificationScreen,

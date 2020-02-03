@@ -76,4 +76,9 @@ const styles = StyleSheet.create({
   }
 });
 
+OnboardingScreenFive.navigationOptions = {
+  header: null
+}
+
+
 export default OnboardingScreenFive;

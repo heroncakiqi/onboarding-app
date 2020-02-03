@@ -27,8 +27,13 @@ const OnboardingScreenThree = props => {
 						<WhiteText>your expenses, adding goals</WhiteText>
 					</View>
 					<SlideIndication />
-					<ButtonContainer style={styles.buttonContainer}>
-						<NiceButton  transparent>Login</NiceButton>
+          <ButtonContainer style={styles.buttonContainer}>
+            <NiceButton 
+              onPress={() => props.navigation.navigate('Login')}
+             transparent
+            >
+              Login
+            </NiceButton>
 						<NiceButton 
 							style={styles.button}
 							onPress={() => props.goNext()}>

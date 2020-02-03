@@ -1,24 +1,79 @@
 import React from 'react';
 import {Container, Content, H1, H3} from 'native-base';
-import {Text} from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 
 const TermsAndConditions = () => {
   return (
-    <Container>
-        <H1>One last thing</H1>
+    <Container style={styles.background}>
+      <Content style={styles.content}>
+        <H1 style={styles.title}>One last thing</H1>
         <H3>Terms of service</H3>
-      <Content>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam leo massa, accumsan at laoreet vel, ultrices sit amet nulla. Vestibulum volutpat, lacus et pulvinar pulvinar, metus velit varius quam, sed molestie arcu ex id nisi. Curabitur ligula mauris, vehicula quis semper in, mollis vitae metus. Nulla suscipit nunc nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras volutpat tempus urna vitae sollicitudin. Sed vehicula vitae dui ac volutpat. Nullam vitae facilisis tellus. Pellentesque placerat tortor lacus, eget pretium leo vestibulum vitae. Mauris condimentum sodales augue ut tempor. Mauris at elit eget magna lacinia commodo. Morbi consequat risus vitae porttitor tristique. Pellentesque feugiat id nulla at volutpat. Nunc vitae rhoncus augue, a feugiat odio.
-
-Nulla consectetur, neque non vulputate maximus, urna neque consequat neque, quis pulvinar libero odio tincidunt augue. Curabitur semper orci metus, eu vehicula sem rutrum id. Quisque tellus metus, sollicitudin a sapien at, vehicula varius sapien. Aliquam sed molestie turpis. Quisque hendrerit tellus non nulla iaculis, at volutpat felis laoreet. Maecenas rutrum id turpis quis vehicula. Duis vitae accumsan nunc. Mauris finibus, dui et malesuada ultrices, nunc libero lobortis elit, blandit viverra erat urna nec nisi. Praesent sodales eleifend lorem et ultricies. Pellentesque non accumsan dolor, eget dapibus augue. Phasellus luctus odio nisi, id tristique orci vestibulum a.
-
-Aliquam vehicula maximus nunc. Pellentesque tincidunt ipsum quis diam scelerisque, nec tristique nibh dignissim. Etiam hendrerit id leo varius lacinia. Proin ut dui sodales mi dignissim blandit sit amet a augue. Nunc auctor lacus non faucibus dapibus. Vivamus consectetur, velit blandit sollicitudin scelerisque, eros ipsum finibus dui, ut rhoncus urna urna sed nisl. Nunc egestas dui neque, eu vulputate erat varius vel.
+        <Text style={styles.p}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Donec id ipsum ullamcorper, bibendum sapien sed, dictum metus. 
+        Quisque dapibus ornare velit. Etiam orci magna, luctus et mattis a, 
+        lobortis vitae tellus. Pellentesque dapibus semper leo, 
+        in suscipit tortor blandit vitae. Phasellus viverra accumsan orci in efficitur. 
+        Morbi pretium turpis id mi rutrum gravida. 
+        Vestibulum laoreet enim sit amet purus eleifend, 
+        ut feugiat magna faucibus. Vivamus consequat bibendum condimentum.
+        </Text>
+        <Text style={styles.p}>
+          Pellentesque dignissim justo diam, ut consequat erat suscipit nec.
+          Mauris a blandit sem. Sed viverra vitae ante sit amet condimentum. 
+          Etiam ut nunc eleifend, malesuada libero eu, eleifend lacus. 
+          Sed sed velit id dolor aliquet auctor in a ligula. Integer faucibus erat nunc,
+            eget lacinia magna congue ac. Phasellus id enim eget turpis posuere vehicula.
+        </Text>
+        <Text style={styles.p}>
+          Nam feugiat ultricies fringilla. 
+          Phasellus et nulla ac arcu aliquam commodo in in orci.
+          Nullam et ullamcorper arcu. Nulla at venenatis purus.
+          Nunc molestie leo eget lectus fringilla egestas.
+          Aliquam vestibulum velit magna, sed pharetra libero venenatis in. 
+          Proin ac massa accumsan est tempus tempus. Integer ante est,
+          vestibulum ac tortor eu, mollis aliquet nibh. Nulla vitae dapibus nisi,
+          sit amet facilisis tellus. 
+          Donec viverra dolor dapibus quam feugiat bibendum.
+          Vestibulum sed velit vitae magna vehicula porta.
+        </Text>
+        <Text style={styles.p}>
+          Fusce vitae felis ut diam viverra tincidunt. 
+          Donec interdum augue ac metus efficitur, vitae convallis nulla tincidunt. 
+          Integer non condimentum orci. In ac fermentum eros. Integer sagittis pretium aliquet. Morbi varius ex metus, in euismod sapien porta eget. 
+          Morbi accumsan risus erat. Nulla vulputate auctor lorem, 
+          sed mollis lectus lobortis vitae.
         </Text>
       </Content>
     </Container>
   )
 }
 
+const styles = StyleSheet.create({
+  background: {
+    backgroundColor: '#fcfcff'
+  },  
+  content: {
+    marginTop: 20,
+    width: "90%",
+    alignSelf: "center"
+  },
+  title: {
+    marginBottom: 12
+  },
+  p: {
+    marginVertical: 12
+  }
+});
+
+TermsAndConditions.navigationOptions = {
+  headerStyle: {
+    backgroundColor: '#fcfcff',
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+    paddingTop: 20
+  },
+}
 
 export default TermsAndConditions;
