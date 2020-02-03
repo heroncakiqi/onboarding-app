@@ -51,8 +51,6 @@ const styles = StyleSheet.create({
 	button: {
 		marginBottom: 28
 	},
-	buttonContainer: {
-	},
 	skip: {
 		marginVertical: 18
 	},

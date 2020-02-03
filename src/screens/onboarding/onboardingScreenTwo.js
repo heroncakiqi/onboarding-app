@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: 'space-between',
     marginTop: 60,
-    marginBottom: 0,
     flex: 1,
-    position: 'relative'
-  },
-  textContainer: {
+    position: 'relative',
+    alignSelf: 'center',
+    width: "100%"
   },
   title: {
     marginBottom: 12
@@ -72,14 +71,16 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%',
     alignSelf: 'center',
+    width: "90%",
     zIndex: 4,
     marginBottom: 36,
-    zIndex: 100
+    zIndex: 1,
   },
   skip: {
-    marginRight: 58
+    marginTop: 14,
+    marginRight: 58,
+    height: 28,
   }
 });
 

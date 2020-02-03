@@ -1,20 +1,18 @@
 import React,{useState, useEffect, useRef} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
-import { H1, Container, Header, Content, Form, Item, Input } from 'native-base';
+import { connect } from 'react-redux';
+import {View, Text, StyleSheet } from 'react-native';
+import { H1, Container,  Content } from 'native-base';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 import {withNavigationFocus} from 'react-navigation';
 
 import {setPasscode} from '../../actions/inputActions';
 
-import Spacer from '../../components/Spacer';
 import EvenNicerButton from '../../components/EvenNicerButton';
 
-const PasscodeScreen = props => {
+const VerificationScreen = props => {
   const [code, setCode] = useState('');
   const pinInput = useRef();
-  const dispatch = useDispatch();
-  const {mobileNumber} = useSelector(state => state.signupForm)
+
 
   useEffect(() => {
     pinInput.current.focus()
@@ -24,6 +22,7 @@ const PasscodeScreen = props => {
     if(code.length === 4) {
       props.navigation.navigate('TermsAndConditions');
     }
+    console.log(props)
   },[code])
 
   const handleContinue = () => {
@@ -32,43 +31,39 @@ const PasscodeScreen = props => {
     }
   }
   const handleTextChange = (e) => {
-    if(!isNaN(e)) {
-      setCode(e)
+    const input = e.trim();
+    if(!isNaN(input)) {
+      setCode(input)
     }
   }
   return (
     <Container style={styles.background}>
-        <Content style={styles.content}>
-          <Spacer />
-          <H1>Verification code</H1>
-          <Spacer />
-          <Text>Plese enter the 4-digit code sent to you at {mobileNumber}</Text>
-          <Spacer />
-          <Spacer />
-          <SmoothPinCodeInput
-            cellStyle={styles.cellStyle}
-            cellStyleFocused={{
-              borderColor: '#31d19e'
-            }}
-            textStyle={{
-              color: '#1c1c1c',
-              fontSize: 22,
-            }}
-            containerStyle={styles.pinContainer}
-            ref={pinInput}
-            value={code}
-            onTextChange={setCode}
-          />
-        </Content>
-        <View>
+        <Content contentContainerStyle={styles.content}>
+          <View>
+            <H1 style={styles.title}>Verification code</H1>
+              <Text>Plese enter the 4-digit code sent to you at {props.mobileNumber}</Text>
+            <SmoothPinCodeInput
+              cellStyle={styles.cellStyle}
+              cellStyleFocused={{
+                borderColor: '#31d19e'
+              }}
+              textStyle={{
+                color: '#1c1c1c',
+                fontSize: 22,
+              }}
+              containerStyle={styles.pinContainer}
+              ref={pinInput}
+              value={code}
+              onTextChange={handleTextChange}
+            />
+          </View>
           <EvenNicerButton 
+            style={styles.button}
             onPress={handleContinue}
           >
             Resend
           </EvenNicerButton>
-          <Spacer />
-          <Spacer />
-        </View>
+        </Content>
     </Container>
   )
 }
@@ -76,15 +71,22 @@ const PasscodeScreen = props => {
 const styles = StyleSheet.create({
   background: {
     backgroundColor: '#fcfcff',
-    flex: 1,
-    justifyContent: 'space-between'
+    flex: 1
   },
   content: {
     width: '90%',
-    alignSelf: "center"
+    alignSelf: "center",
+    justifyContent: 'space-between',
+    marginTop: 20,
+    flex: 1,
+  },
+  title: {
+    marginBottom: 12
   },
   pinContainer: {
-    width: "100%"
+    width: "100%",
+    marginTop: 40,
+    width: '100%',
   },
   cellStyle: {
       borderBottomWidth: 3,
@@ -92,10 +94,25 @@ const styles = StyleSheet.create({
       marginLeft: 6,
       marginRight: 6
   },
-  arrow: {
-    marginLeft: 8
+  button: {
+    marginBottom: 40
   }
 })
 
+VerificationScreen.navigationOptions = {
+  headerStyle: {
+    backgroundColor: '#fcfcff',
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+    paddingTop: 20
+  },
+}
 
-export default withNavigationFocus(PasscodeScreen);
+const mapStateToProps = state => {
+  return {
+    mobileNumber: state.signupForm.mobileNumber
+  }
+}
+
+export default connect(mapStateToProps)(withNavigationFocus(VerificationScreen));

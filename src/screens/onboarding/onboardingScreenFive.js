@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
   },
   button: {
-    marginVertical: 8
+    marginVertical: 6
   },
   fbButton: {
     marginBottom: 32

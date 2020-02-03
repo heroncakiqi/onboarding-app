@@ -1,70 +1,62 @@
-import React,{useState, useEffect, useRef} from 'react';
-import {useDispatch} from 'react-redux';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
-import { H1, Container, Header, Content, Form, Item, Input } from 'native-base';
-import LinearGradient from 'react-native-linear-gradient';
+import React,{useState, useRef} from 'react';
+import {connect} from 'react-redux';
+import {View, Text, StyleSheet} from 'react-native';
+import { H1, Container, Content } from 'native-base';
 import SmoothPinCodeInput from 'react-native-smooth-pincode-input';
 
 import {setPasscode} from '../../actions/inputActions';
 
-import Spacer from '../../components/Spacer';
-import ButtonContainer from '../../components/ButtonContainer';
 import EvenNicerButton from '../../components/EvenNicerButton';
 
 const PasscodeScreen = props => {
   const [code, setCode] = useState('');
   const pinInput = useRef();
-  const dispatch = useDispatch();
 
   const handleContinue = () => {
     if(code.length === 4) {
-      dispatch(setPasscode(code));
+      props.setPasscode(code)
       props.navigation.navigate('Verification');
     }
   }
   const handleTextChange = (e) => {
-    if(!isNaN(e)) {
-      setCode(e)
+    const input = e.trim();
+    if(!isNaN(input)) {
+      setCode(input)
     }
   }
   return (
     <Container style={styles.background}>
-        <Content style={styles.content}>
-          <Spacer />
-          <H1>Create passcode</H1>
-          <Spacer />
-          <Text>Enter your OPT code here. Used for logging in.</Text>
-          <Spacer />
-          <Spacer />
-            <SmoothPinCodeInput
-              autoFocus
-              placeholder={<View style={{
-                width: '100%',
-                height: '100%',
-                backgroundColor: '#ffffff',
-                borderRadius: 10
-              }}></View>}
-              textStyle={{
-                fontSize: 24,
-                color: 'white'
-              }}
-              containerStyle={styles.pinContainer}
-              cellStyle={styles.cellStyle}
-              ref={pinInput}
-              value={code}
-              onTextChange={handleTextChange}
-            />
-        </Content>
-        <View>
-          <EvenNicerButton 
-            onPress={handleContinue}
-            style={styles.content}
+        <Content contentContainerStyle={styles.content}>
+          <View>
+            <H1 style={styles.title}>Create passcode</H1>
+            <Text>Enter your OPT code here. Used for logging in.</Text>
+              <SmoothPinCodeInput
+                autoFocus
+                placeholder={<View style={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: '#ffffff',
+                  borderRadius: 10
+                }}></View>}
+                textStyle={{
+                  fontSize: 24,
+                  color: 'white'
+                }}
+                containerStyle={styles.pinContainer}
+                cellStyle={styles.cellStyle}
+                ref={pinInput}
+                value={code}
+                onTextChange={handleTextChange}
+              />
+          </View>
+
+        <EvenNicerButton 
+          style={styles.button}
+          onPress={handleContinue}
           >
-            Continue
-          </EvenNicerButton>
-          <Spacer />
-          <Spacer />
-        </View>
+          Continue
+        </EvenNicerButton>
+      </Content>
     </Container>
   )
 }
@@ -73,13 +65,19 @@ const styles = StyleSheet.create({
   background: {
     backgroundColor: '#fcfcff',
     flex: 1,
-    justifyContent: 'space-between'
   },
   content: {
     width: '90%',
-    alignSelf: "center"
+    alignSelf: "center",
+    justifyContent: 'space-between',
+    marginTop: 20,
+    flex: 1,
+  },
+  title: {
+    marginBottom: 12
   },
   pinContainer: {
+    marginTop: 40,
     width: '100%',
     height: 80,
   },
@@ -93,10 +91,19 @@ const styles = StyleSheet.create({
     marginRight: 14,
     elevation: 6
   },
-  arrow: {
-    marginLeft: 8
+  button: {
+    marginBottom: 40
   }
 })
 
+PasscodeScreen.navigationOptions = {
+  headerStyle: {
+    backgroundColor: '#fcfcff',
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+    paddingTop: 20
+  },
+}
 
-export default PasscodeScreen;
+export default connect(null, {setPasscode})(PasscodeScreen);

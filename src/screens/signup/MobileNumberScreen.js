@@ -1,5 +1,5 @@
 import React,{useState, useEffect, useRef} from 'react';
-import {useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
 import { Text, StyleSheet, StatusBar} from 'react-native';
 import {Content, H1, Container, View} from 'native-base';
 import PhoneInput from 'react-native-phone-input';
@@ -7,15 +7,12 @@ import {withNavigationFocus} from 'react-navigation';
 
 import {setMobileNumber} from '../../actions/inputActions';
 
-import Spacer from '../../components/Spacer';
-import ButtonContainer from '../../components/ButtonContainer';
 import EvenNicerButton from '../../components/EvenNicerButton';
 
 const MobileNumberScreen = props => {
   const numRef = useRef();
   const [number, setNumber] = useState('');
   const [numErr, setNumErr] = useState(null);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if(props.isFocused) {
@@ -26,7 +23,7 @@ const MobileNumberScreen = props => {
 
   const handleContinue = () => {
     if(numRef.current.isValidNumber(number)){
-      dispatch(setMobileNumber(number))
+      props.setMobileNumber(number)
       props.navigation.navigate('Passcode');
     } else {
       setNumErr('please enter a valid number')
@@ -101,4 +98,4 @@ MobileNumberScreen.navigationOptions = {
   },
 }
 
-export default withNavigationFocus(MobileNumberScreen);
+export default connect(null, {setMobileNumber})(withNavigationFocus(MobileNumberScreen));
