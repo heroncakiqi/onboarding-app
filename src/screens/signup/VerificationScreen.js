@@ -22,7 +22,6 @@ const VerificationScreen = props => {
     if(code.length === 4) {
       props.navigation.navigate('TermsAndConditions');
     }
-    console.log(props)
   },[code])
 
   const handleContinue = () => {
@@ -95,7 +94,9 @@ const styles = StyleSheet.create({
       marginRight: 6
   },
   button: {
-    marginBottom: 40
+    marginBottom: 40,
+    width: 160,
+    alignSelf: 'center'
   }
 })
 

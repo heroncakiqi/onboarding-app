@@ -22,7 +22,6 @@ const OnboardingScreenFour = props => {
 					</View>
 						<EvenNicerButton 
 							onPress={() => props.goNext()}
-							large
 							style={styles.button}>
 								Let's get started
 						</EvenNicerButton>

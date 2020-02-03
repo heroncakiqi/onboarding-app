@@ -17,7 +17,6 @@ const OnboardingSwiper = props => {
   return (
   <Swiper ref={swiperRef} showsPagination={false}>
     <OnboardingScreenOne 
-      {...props}
       goNext={handleNext} 
     />
     <OnboardingScreenTwo 

@@ -26,13 +26,6 @@ const EvenNicerButton = props => {
     }
   }
 
-  if(props.large) {
-    buttonStyle = {
-      ...buttonStyle,
-      width: '100%'
-    }
-  }
-
   return (
     <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
       <LinearGradient
