@@ -3,20 +3,13 @@ import { StyleSheet, StatusBar } from 'react-native'
 import SafeAreaView from 'react-native-safe-area-view';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import { Provider } from 'react-redux'
 
 import store from './src/store';
 
 // onboarding screens
-
 import OnboardingSwiper from './src/screens/onboarding/OnboaedingSwiper'
-import OnboardingScreenOne from './src/screens/onboarding/onboardingScreenOne';
-import OnboardingScreenTwo from './src/screens/onboarding/onboardingScreenTwo';
-import OnboardingScreenThree from './src/screens/onboarding/onboardingScreenThree';
-import OnboardingScreenFour from './src/screens/onboarding/onboardingScreenFour';
 import OnboardingScreenFive from './src/screens/onboarding/onboardingScreenFive';
-import OnboardingScreenSix from './src/screens/onboarding/onboardingScreenSix';
 
 
 import AuthLoadingScreen from './src/screens/AuthLoadingScreen';
@@ -27,13 +20,18 @@ import PasscodeScreen from './src/screens/signup/PasscodeScreen';
 import VerificationScreen from './src/screens/signup/VerificationScreen';
 import TermsAndConditionsScreen from './src/screens/signup/TermsAndConditions';
 
+// login screen
+
+import LoginScreen from './src/screens/login/LoginScreen';
+
 const authFlow = createStackNavigator({
   OnboardingSwiper,
-  Login: OnboardingScreenFive,
+  SignupLogin: OnboardingScreenFive,
   MobileNumber: MobileNumberScreen,
   Passcode: PasscodeScreen,
   Verification: VerificationScreen,
-  TermsAndConditions: TermsAndConditionsScreen
+  TermsAndConditions: TermsAndConditionsScreen,
+  Login: LoginScreen,
 });
 
 const navigator = createSwitchNavigator({
@@ -54,10 +52,10 @@ const styles = StyleSheet.create({
 export default () => {
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" />
-        <App />
-      </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+        <StatusBar translucent backgroundColor="transparent" />
+          <App />
+        </SafeAreaView>
     </Provider>
   )
 }

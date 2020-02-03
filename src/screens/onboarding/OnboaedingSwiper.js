@@ -15,7 +15,7 @@ const OnboardingSwiper = props => {
     swiperRef.current.scrollBy(1)
   }
   return (
-  <Swiper ref={swiperRef} showsPagination={false}>
+  <Swiper ref={swiperRef} showsPagination={false} >
     <OnboardingScreenOne 
       goNext={handleNext} 
     />
@@ -37,6 +37,7 @@ const OnboardingSwiper = props => {
     />
     <OnboardingScreenSix 
       {...props}
+      goNext={handleNext}
     />
   </Swiper>
   )

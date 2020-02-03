@@ -27,8 +27,9 @@ const OnboardingScreenThree = props => {
 						<WhiteText>your expenses, adding goals</WhiteText>
 					</View>
 					<SlideIndication />
-          <ButtonContainer style={styles.buttonContainer}>
+          <View style={styles.buttonContainer}>
             <NiceButton 
+              style={styles.button}
               onPress={() => props.navigation.navigate('Login')}
              transparent
             >
@@ -39,7 +40,7 @@ const OnboardingScreenThree = props => {
 							onPress={() => props.goNext()}>
 							Sign up
 						</NiceButton>
-					</ButtonContainer>
+					</View>
 				</Content>
 			</LinearGradient>
 		</Container>
@@ -67,7 +68,8 @@ const styles = StyleSheet.create({
 		marginHorizontal: 12
 	},
 	button: {
-		flex: 1
+    flex: 1,
+    marginHorizontal: 16
 	},
 	buttonContainer: {
 		flexDirection: "row",

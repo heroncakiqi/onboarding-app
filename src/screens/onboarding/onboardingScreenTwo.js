@@ -25,7 +25,7 @@ const OnboardingScreenTwo = props => {
           <Image style={styles.mockup} source={require('../../assets/onboarding-two/mockup.png')} />
             <View style={styles.buttonContainer}>
               <TouchableOpacity
-                onPress={() => props.navigation.navigate('Login')}
+                onPress={() => props.navigation.navigate('SignupLogin')}
                 style={styles.skip}
               >
                 <WhiteText>SKIP</WhiteText>

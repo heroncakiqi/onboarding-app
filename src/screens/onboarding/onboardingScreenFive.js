@@ -37,6 +37,7 @@ const OnboardingScreenFive = props => {
             <View style={styles.login}>
               <Text style={styles.text}>Already have an account?</Text>
               <NiceButton 
+                onPress={() => props.navigation.navigate('Login')}
                 blured 
                 large 
                 style={styles.button}

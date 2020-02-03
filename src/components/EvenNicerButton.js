@@ -26,6 +26,18 @@ const EvenNicerButton = props => {
     }
   }
 
+  if(props.red) {
+    return (
+      <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
+        <LinearGradient
+        style={styles.button}
+        start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#f47c8f', '#eb658d']}
+        >
+          <H3 style={textStyle}>{props.children}</H3>
+        </LinearGradient>
+      </TouchableOpacity>
+    );
+  };
   return (
     <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
       <LinearGradient

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
-import ShadowView from 'react-native-simple-shadow-view'
-
 
 const NiceButton = props => {
 
@@ -51,18 +49,9 @@ const NiceButton = props => {
     textStyle = {color: 'white'}
   }
   return (
-    <ShadowView
-    style={{
-        shadowColor: 'black',
-        shadowOpacity: 4,
-        shadowRadius: 20,
-        shadowOffset: { width: 14, height: 23 },
-      }}
-    >
     <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
       <Text style={textStyle}>{props.children}</Text>
     </TouchableOpacity>
-    </ShadowView>
   );
 };
 
