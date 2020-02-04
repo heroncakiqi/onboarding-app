@@ -1,49 +1,49 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { View, H2, H3 } from 'native-base';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, H2, H3} from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 const EvenNicerButton = props => {
-
   let buttonStyle = {
     ...styles.container,
-    ...props.style
-  }
-
-  let textStyle = {
-    ...styles.textStyle
+    ...props.style,
   };
 
-  if(props.transparent) {
+  let textStyle = {
+    ...styles.textStyle,
+  };
+
+  if (props.transparent) {
     buttonStyle = {
       ...buttonStyle,
       ...styles.textStyle,
-      ...styles.transparent
-    }
+      ...styles.transparent,
+    };
     textStyle = {
-      color: 'white'
-    }
+      color: 'white',
+    };
   }
 
-  if(props.red) {
+  if (props.red) {
     return (
       <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
         <LinearGradient
-        style={styles.button}
-        start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#f47c8f', '#eb658d']}
-        >
+          style={styles.button}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={['#f47c8f', '#eb658d']}>
           <H3 style={textStyle}>{props.children}</H3>
         </LinearGradient>
       </TouchableOpacity>
     );
-  };
+  }
   return (
     <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
       <LinearGradient
-      style={styles.button}
-      start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#7ef192', '#2dc897']}
-      >
+        style={styles.button}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#7ef192', '#2dc897']}>
         <H3 style={textStyle}>{props.children}</H3>
       </LinearGradient>
     </TouchableOpacity>
@@ -53,12 +53,12 @@ const EvenNicerButton = props => {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 36,
     alignSelf: 'center',
-    width: "100%"
+    width: '100%',
   },
   container: {
     borderRadius: 30,
@@ -69,14 +69,14 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   textStyle: {
-    color: 'white'
+    color: 'white',
   },
   transparent: {
     backgroundColor: 'transparent',
     elevation: 0,
     borderWidth: 1,
-    borderColor: 'white'
-  }
-})
+    borderColor: 'white',
+  },
+});
 
 export default EvenNicerButton;

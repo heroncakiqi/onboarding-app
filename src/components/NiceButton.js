@@ -1,52 +1,51 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const NiceButton = props => {
-
   let buttonStyle = {
     ...styles.button,
-    ...props.style
-  }
-
-  let textStyle = {
-    ...styles.text
+    ...props.style,
   };
 
-  if(props.transparent) {
+  let textStyle = {
+    ...styles.text,
+  };
+
+  if (props.transparent) {
     buttonStyle = {
       ...buttonStyle,
-      ...styles.transparent
-    }
+      ...styles.transparent,
+    };
     textStyle = {
       ...textStyle,
-      color: 'white'
-    }
+      color: 'white',
+    };
   }
 
-  if(props.blue){
+  if (props.blue) {
     buttonStyle = {
       ...buttonStyle,
-      ...styles.blue
-    }
+      ...styles.blue,
+    };
     textStyle = {
       ...textStyle,
-      color: 'white'
-    }
+      color: 'white',
+    };
   }
 
-  if(props.large) {
+  if (props.large) {
     buttonStyle = {
       ...buttonStyle,
-      width: '100%'
-    }
+      width: '100%',
+    };
   }
 
-  if(props.blured) {
+  if (props.blured) {
     buttonStyle = {
       ...buttonStyle,
-      backgroundColor: 'rgba(255,255,255,0.2)'
-    }
-    textStyle = {color: 'white'}
+      backgroundColor: 'rgba(255,255,255,0.2)',
+    };
+    textStyle = {color: 'white'};
   }
   return (
     <TouchableOpacity style={buttonStyle} onPress={props.onPress}>
@@ -59,8 +58,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'white',
     borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 14,
     paddingHorizontal: 36,
     alignSelf: 'center',
@@ -72,17 +71,17 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   text: {
-    fontSize: 20
+    fontSize: 20,
   },
   transparent: {
     backgroundColor: 'transparent',
     elevation: 0,
     borderWidth: 1,
-    borderColor: 'white'
+    borderColor: 'white',
   },
   blue: {
     backgroundColor: '#4666d5',
-  }
-})
+  },
+});
 
 export default NiceButton;

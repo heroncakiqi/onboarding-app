@@ -1,17 +1,17 @@
-
 const INITIAL_STATE = {
-    mobileNumber: '',
-    passcode: ''
+  mobileNumber: '',
+  passcode: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action.payload)
-  switch(action.type) {
+  switch (action.type) {
     case 'set_mobile_number':
-      return {...state, mobileNumber: action.payload}
+      return {...state, mobileNumber: action.payload};
     case 'set_passcode':
-      return {...state, passcode: action.payload}
+      return {...state, passcode: action.payload};
+    case 'create_user':
+      return {mobileNumber: '', passcode: ''};
     default:
-      return state
+      return state;
   }
-}
+};

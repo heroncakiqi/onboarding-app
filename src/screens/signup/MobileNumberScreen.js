@@ -1,6 +1,6 @@
-import React,{useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
-import { Text, StyleSheet, StatusBar} from 'react-native';
+import {Text, StyleSheet, StatusBar} from 'react-native';
 import {Content, H1, Container, View} from 'native-base';
 import PhoneInput from 'react-native-phone-input';
 import {withNavigationFocus} from 'react-navigation';
@@ -15,50 +15,45 @@ const MobileNumberScreen = props => {
   const [numErr, setNumErr] = useState(null);
 
   useEffect(() => {
-    if(props.isFocused) {
+    if (props.isFocused) {
       numRef.current.focus();
     }
-    return () => setNumErr(null)
-  },[props.isFocused]);
+    return () => setNumErr(null);
+  }, [props.isFocused]);
 
   const handleContinue = () => {
-    if(numRef.current.isValidNumber(number)){
-      props.setMobileNumber(number)
+    if (numRef.current.isValidNumber(number)) {
+      props.setMobileNumber(number);
       props.navigation.navigate('Passcode');
     } else {
-      setNumErr('please enter a valid number')
+      setNumErr('please enter a valid number');
     }
-  }
+  };
   return (
     <Container style={styles.background}>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" />
-        <Content contentContainerStyle={styles.content}>
-          <View>
-            <H1 style={styles.title}>Let's get started</H1>
-            <Text>What is your mobile number?</Text>
-            <View style={styles.input}>
-              <PhoneInput
-                ref={numRef}
-                value={number} 
-                onChangePhoneNumber={setNumber}
-                autoFormat
-                textProps={{placeholder: 'Mobile number'}}
-              />
-            </View>
-            {numErr && <Text style={{color: 'red'}}>{numErr}</Text>}
+      <Content contentContainerStyle={styles.content}>
+        <View>
+          <H1 style={styles.title}>Let's get started</H1>
+          <Text>What is your mobile number?</Text>
+          <View style={styles.input}>
+            <PhoneInput
+              ref={numRef}
+              value={number}
+              onChangePhoneNumber={setNumber}
+              autoFormat
+              textProps={{placeholder: 'Mobile number'}}
+            />
           </View>
-            <EvenNicerButton 
-              style={styles.button}
-              onPress={handleContinue}
-            >
-              Continue
-            </EvenNicerButton>
-        </Content>
+          {numErr && <Text style={{color: 'red'}}>{numErr}</Text>}
+        </View>
+        <EvenNicerButton style={styles.button} onPress={handleContinue}>
+          Continue
+        </EvenNicerButton>
+      </Content>
     </Container>
-  )
-}
-
-
+  );
+};
 
 const styles = StyleSheet.create({
   background: {
@@ -67,11 +62,11 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    width: "100%",
-    alignSelf: "center",
-    justifyContent: "space-between",
+    width: '100%',
+    alignSelf: 'center',
+    justifyContent: 'space-between',
     marginTop: 20,
-    width: "90%"
+    width: '90%',
   },
   title: {
     marginBottom: 34,
@@ -84,9 +79,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   button: {
-    marginBottom: 40
-  }
-})
+    marginBottom: 40,
+  },
+});
 
 MobileNumberScreen.navigationOptions = {
   headerStyle: {
@@ -94,8 +89,10 @@ MobileNumberScreen.navigationOptions = {
     elevation: 0,
     shadowOpacity: 0,
     borderBottomWidth: 0,
-    paddingTop: 20
+    paddingTop: 20,
   },
-}
+};
 
-export default connect(null, {setMobileNumber})(withNavigationFocus(MobileNumberScreen));
+export default connect(null, {setMobileNumber})(
+  withNavigationFocus(MobileNumberScreen),
+);

@@ -14,6 +14,9 @@ import OnboardingScreenFive from './src/screens/onboarding/onboardingScreenFive'
 
 import AuthLoadingScreen from './src/screens/AuthLoadingScreen';
 
+import UploadPictureScreen from './src/screens/appFlow/UploadPictureScreen';
+import MoreInfoScreen from './src/screens/appFlow/MoreInfoScreen';
+
 // signup screens
 import MobileNumberScreen from './src/screens/signup/MobileNumberScreen'
 import PasscodeScreen from './src/screens/signup/PasscodeScreen';
@@ -24,20 +27,35 @@ import TermsAndConditionsScreen from './src/screens/signup/TermsAndConditions';
 
 import LoginScreen from './src/screens/login/LoginScreen';
 
-const authFlow = createStackNavigator({
+const signupFlow = createStackNavigator({
   OnboardingSwiper,
   SignupLogin: OnboardingScreenFive,
   MobileNumber: MobileNumberScreen,
   Passcode: PasscodeScreen,
   Verification: VerificationScreen,
   TermsAndConditions: TermsAndConditionsScreen,
-  Login: LoginScreen,
 });
+
+const appFlow = createStackNavigator({
+  UploadPicture: UploadPictureScreen,
+  MoreInfo: MoreInfoScreen
+}, {
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#fcfcff',
+      elevation: 0,
+      shadowOpacity: 0,
+      borderBottomWidth: 0,
+      paddingTop: 20
+    },
+  }
+})
 
 const navigator = createSwitchNavigator({
   AuthLoading: AuthLoadingScreen,
-  authFlow,
-  // TODO: App flow
+  Login: LoginScreen,
+  signupFlow,
+  appFlow
 })
 
 const App = createAppContainer(navigator);
