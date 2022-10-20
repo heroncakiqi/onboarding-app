@@ -22,7 +22,7 @@
     "react-native-image-picker": "^2.2.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-phone-input": "^0.2.4",
-    "react-native-reanimated": "^1.7.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-simple-shadow-view": "^1.6.3",
     "react-native-smooth-pincode-input": "^1.0.9",
     "react-native-swiper": "^1.6.0-nightly.5",
